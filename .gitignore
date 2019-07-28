@@ -4,5 +4,7 @@ Sample.App/bin
 Sample.App/obj
 Sample.Dal/bin
 Sample.Dal/obj
+Sample.Shared/bin
+Sample.Shared/obj
 Sample.Test/bin
 Sample.Test/obj
