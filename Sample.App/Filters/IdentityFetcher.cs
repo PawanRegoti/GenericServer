@@ -10,22 +10,19 @@ namespace Sample.App.Filters
 		public override void OnActionExecuting(ActionExecutingContext actionContext)
 		{
 			var httpContext = actionContext.HttpContext;
-			var setupId = GetUserIdFromHttpContext(httpContext);
+			var userId = GetUserIdFromHttpContext(httpContext);
 
 			var identityProvider = (IIdentityProvider) httpContext.RequestServices.GetService(typeof(IIdentityProvider));
-      identityProvider.SetUserId(setupId);
+      identityProvider.SetUserId(userId);
 		}
 
 		private int GetUserIdFromHttpContext(HttpContext httpContext)
 		{
-			var claims = httpContext.User.Claims.Where(claim => claim?.Type == CustomClaimTypes.UserId);
-			if (claims.Any())
+			if (Int32.TryParse(httpContext.Request.Headers["UserId"], out int userId))
 			{
-				if (Int32.TryParse(claims.First().Value, out int setupId))
-				{
-					return setupId;
-				}
+				return userId;
 			}
+
 			throw new NullReferenceException("Could not retrieve user id");
 		}
 	}

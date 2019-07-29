@@ -4,21 +4,37 @@ namespace Sample.App.Mappers
 {
   public static class SampleMapper
   {
-    public static SampleModel Map(SampleDto sampleDto) => new SampleModel
+    public static SampleModel Map(SampleDto sampleDto)
     {
-      DocumentNr = sampleDto.DocumentNr,
-      Name = sampleDto.Name,
-      Address = sampleDto.Address,
-      City = sampleDto.City,
-      Country = sampleDto.Country
-    };
+      if (sampleDto == null)
+      {
+        return null;
+      }
 
-    public static SampleDto Map(int userId, SampleModel sampleModel) => new SampleDto(userId, sampleModel.DocumentNr)
+      return new SampleModel
+      {
+        DocumentNr = sampleDto.DocumentNr,
+        Name = sampleDto.Name,
+        Address = sampleDto.Address,
+        City = sampleDto.City,
+        Country = sampleDto.Country
+      };
+    }
+
+    public static SampleDto Map(int userId, SampleModel sampleModel)
     {
-      Name = sampleModel.Name,
-      Address = sampleModel.Address,
-      City = sampleModel.City,
-      Country = sampleModel.Country
-    };
+      if (sampleModel == null)
+      {
+        return null;
+      }
+
+      return new SampleDto(userId, sampleModel.DocumentNr)
+      {
+        Name = sampleModel.Name,
+        Address = sampleModel.Address,
+        City = sampleModel.City,
+        Country = sampleModel.Country
+      };
+    }
   }
 }
