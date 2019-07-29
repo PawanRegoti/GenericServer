@@ -1,0 +1,36 @@
+﻿{
+  "_id": "12345_1",
+  "UserId": 12345,
+  "DocumentNr": 1,
+  "Name": "Master Roshi",
+  "Address": "Kame House",
+  "City": "Some Island",
+  "Country": "Japan"
+}
+{
+  "_id": "12345_2",
+  "UserId": 12345,
+  "DocumentNr": 2,
+  "Name": "Krillin",
+  "Address": "Kame House",
+  "City": "Some Island",
+  "Country": "Japan"
+}
+{
+  "_id": "12345_3",
+  "UserId": 12345,
+  "DocumentNr": 3,
+  "Name": "Turtle",
+  "Address": "Kame House",
+  "City": "Some Island",
+  "Country": "Japan"
+}
+{
+  "_id": "12345_4",
+  "UserId": 12345,
+  "DocumentNr": 4,
+  "Name": "Oolong",
+  "Address": "Kame House",
+  "City": "Some Island",
+  "Country": "Japan"
+}
