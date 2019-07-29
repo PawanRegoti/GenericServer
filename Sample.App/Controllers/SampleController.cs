@@ -36,9 +36,9 @@ namespace Sample.App.Controllers
       return Ok(collectionEnvelope);
     }
 
-    public override ActionResult<SampleModel> Get(int documentNr)
+    public override ActionResult<SampleModel> Get(int id)
     {
-      (var entity, var error) = _commandFactory.Get(_userId, documentNr);
+      (var entity, var error) = _commandFactory.Get(_userId, id);
 
       if (error != null)
       {
@@ -66,9 +66,9 @@ namespace Sample.App.Controllers
       return Created(CurrentUrl, result);
     }
 
-    public override ActionResult<SampleModel> Update(int documentNr, [FromBody] SampleModel data)
+    public override ActionResult<SampleModel> Update(int id, [FromBody] SampleModel data)
     {
-      if(documentNr != data.DocumentNr)
+      if(id != data.DocumentNr)
       {
         return BadRequest();
       }
@@ -92,9 +92,9 @@ namespace Sample.App.Controllers
       return StatusCode(500, "Unable to update the data.");
     }
 
-    public override ActionResult<SampleModel> Delete(int documentNr)
+    public override ActionResult<SampleModel> Delete(int id)
     {
-      (var result, var error) = _commandFactory.Delete(_userId, documentNr);
+      (var result, var error) = _commandFactory.Delete(_userId, id);
 
       if (error != null)
       {

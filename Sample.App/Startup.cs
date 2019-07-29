@@ -7,6 +7,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using MongoDB.Driver;
 using Newtonsoft.Json;
+using Sample.App.Factories;
 using Sample.App.Filters;
 using Sample.App.Session;
 using Sample.App.SwaggerScripts;
@@ -152,6 +153,7 @@ namespace Sample.App
     {
       services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
       services.AddScoped<IIdentityProvider, IdentityProvider>();
+      services.AddScoped<ISampleFactory, SampleFactory>();
     }
 
     protected virtual void UseAuthentication(IApplicationBuilder app)

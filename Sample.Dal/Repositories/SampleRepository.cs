@@ -151,7 +151,7 @@ namespace Sample.Dal.Repositories
           return _mongoCollection.Aggregate()
           .Match(x => x.UserId == userId)
           .Group(key => key.UserId, group =>
-            new SampleDto(userId, group.Max(x => x.DocumentNr)))
+            new { DocumentNr = group.Max(x => x.DocumentNr) })
           .FirstOrDefault();
         });
 
