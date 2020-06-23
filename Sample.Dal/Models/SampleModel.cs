@@ -1,10 +1,11 @@
 ﻿using MongoDB.Bson.Serialization.Attributes;
 using System;
+using System.Collections.Generic;
 using System.Linq;
 
 namespace Sample.Dal
 {
-  public class SampleDto
+  public class SampleModel
   {
     [BsonId]
     public string Id => SampleKey.GetKey(UserId, DocumentNr);
@@ -21,7 +22,9 @@ namespace Sample.Dal
 
     public string Country { get; set; }
 
-    public SampleDto(int userId, int documentNr)
+    public IEnumerable<int> PhoneNumbers { get; set; }
+
+    public SampleModel(int userId, int documentNr)
     {
       UserId = userId;
       DocumentNr = documentNr;

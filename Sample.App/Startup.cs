@@ -84,6 +84,7 @@ namespace Sample.App
       app.UseSwaggerUI(c =>
       {
         c.SwaggerEndpoint("/swagger/v1/swagger.json", "Sample API V1");
+        c.RoutePrefix = string.Empty;
       });
 
       app.UseAuthentication();
@@ -97,7 +98,7 @@ namespace Sample.App
       services.AddSwaggerGen(c =>
       {
         c.OperationFilter<UserIdHeaderFilter>();
-        c.SwaggerDoc("v1", new Swashbuckle.AspNetCore.Swagger.Info { Title = "Sample API", Version = "v1" });
+        c.SwaggerDoc("v1", new Microsoft.OpenApi.Models.OpenApiInfo { Title = "Sample API", Version = "v1" });
       });
     }
 

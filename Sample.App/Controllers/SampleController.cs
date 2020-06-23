@@ -8,7 +8,7 @@ namespace Sample.App.Controllers
   [Route("api/[controller]")]
   [ApiController]
   [IdentityFetcher]
-  public class SampleController : BaseController<SampleModel, int>
+  public class SampleController : BaseController<SampleDto, int>
   {
     private ISampleFactory _commandFactory;
     private IIdentityProvider _identityProvider;
@@ -23,7 +23,7 @@ namespace Sample.App.Controllers
       _identityProvider = identityProvider;
     }
 
-    public override ActionResult<CollectionEnvelope<SampleModel>> GetAll()
+    public override ActionResult<CollectionEnvelope<SampleDto>> GetAll()
     {
       (var resultEntries, int totalEntries, var error) = _commandFactory.GetAll(_userId, Info.PageSize, Info.SkipPages);
 
@@ -36,7 +36,7 @@ namespace Sample.App.Controllers
       return Ok(collectionEnvelope);
     }
 
-    public override ActionResult<SampleModel> Get(int id)
+    public override ActionResult<SampleDto> Get(int id)
     {
       (var entity, var error) = _commandFactory.Get(_userId, id);
 
@@ -51,7 +51,7 @@ namespace Sample.App.Controllers
       return Ok(entity);
     }
 
-    public override ActionResult<SampleModel> Create([FromBody] SampleModel data)
+    public override ActionResult<SampleDto> Create([FromBody] SampleDto data)
     {
       (var result, var error) = _commandFactory.Create(_userId, data);
 
@@ -66,7 +66,7 @@ namespace Sample.App.Controllers
       return Created(CurrentUrl, result);
     }
 
-    public override ActionResult<SampleModel> Update(int id, [FromBody] SampleModel data)
+    public override ActionResult<SampleDto> Update(int id, [FromBody] SampleDto data)
     {
       if(id != data.DocumentNr)
       {
@@ -92,7 +92,7 @@ namespace Sample.App.Controllers
       return StatusCode(500, "Unable to update the data.");
     }
 
-    public override ActionResult<SampleModel> Delete(int id)
+    public override ActionResult<SampleDto> Delete(int id)
     {
       (var result, var error) = _commandFactory.Delete(_userId, id);
 

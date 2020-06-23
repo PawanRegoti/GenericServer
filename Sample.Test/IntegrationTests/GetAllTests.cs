@@ -32,7 +32,7 @@ namespace Sample.Test.IntegrationTests
 
 			// Act
 			var response = await client.GetAsync(url);
-			var responseBody = ContentHelper.GetContentAsJson<CollectionEnvelope<SampleModel>>(response.Content);
+			var responseBody = ContentHelper.GetContentAsJson<CollectionEnvelope<SampleDto>>(response.Content);
 
 			// Assert
 			response.IsSuccessStatusCode.Should().BeTrue();
