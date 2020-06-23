@@ -6,21 +6,24 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace Sample.Dal.Repositories
+using Sample.Dal;
+using Sample.Dal.Repositories;
+
+namespace Sample.Infrastructure.SampleRepository
 {
-  public class SampleRepository : ISampleRepository
+  public class SampleMongoRepository: ISampleRepository
   {
     private readonly int _maxRetries;
     private readonly Policy _policy;
-    private readonly IMongoCollection<SampleDto> _mongoCollection;
-    private readonly ILogger<SampleRepository> _logger;
+    private readonly IMongoCollection<SampleModel> _mongoCollection;
+    private readonly ILogger<ISampleRepository> _logger;
 
-    public SampleRepository(IMongoDatabase mongoDatabase,
+    public SampleMongoRepository(IMongoDatabase mongoDatabase,
        string deliveryNoteCollectionName,
        int maxRetries,
-       ILogger<SampleRepository> logger)
+       ILogger<ISampleRepository> logger)
     {
-      _mongoCollection = mongoDatabase.GetCollection<SampleDto>(deliveryNoteCollectionName);
+      _mongoCollection = mongoDatabase.GetCollection<SampleModel>(deliveryNoteCollectionName);
       _logger = logger;
 
       _maxRetries = maxRetries;
@@ -39,7 +42,7 @@ namespace Sample.Dal.Repositories
             });
     }
 
-    public (IEnumerable<SampleDto>, int, SampleException) GetAll(int userId, int pageSize, int skipPages)
+    public (IEnumerable<SampleModel>, int, SampleException) GetAll(int userId, int pageSize, int skipPages)
     {
       try
       {
@@ -55,11 +58,11 @@ namespace Sample.Dal.Repositories
       catch (MongoException e)
       {
         _logger.LogError(e, "Error occurred while attempting to get all relevant documents");
-        return (new List<SampleDto>(), 0, new SampleException(e.Message));
+        return (new List<SampleModel>(), 0, new SampleException(e.Message));
       }
     }
 
-    public (SampleDto, SampleException) Get(int userId, int documentNr)
+    public (SampleModel, SampleException) Get(int userId, int documentNr)
     {
       try
       {
@@ -78,7 +81,7 @@ namespace Sample.Dal.Repositories
       }
     }
 
-    public (SampleDto, SampleException) Create(SampleDto data)
+    public (SampleModel, SampleException) Create(SampleModel data)
     {
       try
       {
@@ -95,7 +98,7 @@ namespace Sample.Dal.Repositories
       }
     }
 
-    public (SampleDto, bool?, SampleException) Update(SampleDto data)
+    public (SampleModel, bool?, SampleException) Update(SampleModel data)
     {
       try
       {
@@ -104,7 +107,7 @@ namespace Sample.Dal.Repositories
           var result = _mongoCollection.ReplaceOne(
             x => x.UserId == data.UserId && x.DocumentNr == data.DocumentNr,
             data,
-            new UpdateOptions { IsUpsert = true }
+            new ReplaceOptions { IsUpsert = true }
           );
 
           if (!result.IsAcknowledged)

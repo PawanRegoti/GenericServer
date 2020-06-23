@@ -6,6 +6,7 @@ using Microsoft.Extensions.Logging;
 using MongoDB.Driver;
 using Sample.App.Mappers;
 using Sample.Dal.Repositories;
+using Sample.Infrastructure.SampleRepository;
 using Sample.Shared.Exceptions;
 
 namespace Sample.App.Factories
@@ -17,29 +18,29 @@ namespace Sample.App.Factories
 		public SampleFactory(
 			IMongoDatabase mongoDatabase,
 			IConfiguration configuration,
-			ILogger<SampleRepository> logger)
+			ILogger<ISampleRepository> logger)
 		{
 			var deliveryNoteCollectionName = configuration.GetValue<string>(StartupConfigurationKey.DeliveryNoteCollectionName);
 			var maxRetries = Convert.ToInt32(configuration.GetValue<string>(StartupConfigurationKey.MongoDbMaxRetries));
 
-			_sampleRepository = new SampleRepository(
+			_sampleRepository = new SampleMongoRepository(
 				mongoDatabase,
 				deliveryNoteCollectionName,
 				maxRetries,
 				logger);
 		}
 
-    public (IEnumerable<SampleModel>, int, SampleException) GetAll(int userId, int pageSize, int skipPages)
+    public (IEnumerable<SampleDto>, int, SampleException) GetAll(int userId, int pageSize, int skipPages)
     {
       (var results, var count, var error) = _sampleRepository.GetAll(userId, pageSize, skipPages);
       return (results.Select(result => SampleMapper.Map(result)), count, error);
     }
-    public (SampleModel, SampleException) Get(int userId, int documentNr)
+    public (SampleDto, SampleException) Get(int userId, int documentNr)
     {
       (var result, var error) = _sampleRepository.Get(userId, documentNr);
       return (SampleMapper.Map(result), error);
     }
-    public (SampleModel, SampleException) Create(int userId, SampleModel data)
+    public (SampleDto, SampleException) Create(int userId, SampleDto data)
     {
       (var nextDocumentNr, var fetchError) = _sampleRepository.GetNextDocumentNr(userId);
       if(fetchError != null)
@@ -51,7 +52,7 @@ namespace Sample.App.Factories
       (var result, var error) = _sampleRepository.Create(SampleMapper.Map(userId, data));
       return (SampleMapper.Map(result), error);
     }
-    public (SampleModel, bool?, SampleException) Update(int userId, SampleModel data)
+    public (SampleDto, bool?, SampleException) Update(int userId, SampleDto data)
     {
       (var result, var status, var error) = _sampleRepository.Update(SampleMapper.Map(userId, data));
       return (SampleMapper.Map(result), status, error);

@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 15
-VisualStudioVersion = 15.0.28307.572
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29728.190
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Sample.App", "Sample.App\Sample.App.csproj", "{27A4CF26-8B2E-4936-9C47-25D7B6855B69}"
 EndProject
@@ -9,7 +9,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Sample.Dal", "Sample.Dal\Sa
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Sample.Test", "Sample.Test\Sample.Test.csproj", "{B1BD5202-4B83-48C0-A09A-E867D3E25339}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sample.Shared", "Sample.Shared\Sample.Shared.csproj", "{CDBF9AF1-FB19-4F97-ABCF-E863B16EBEFE}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Sample.Shared", "Sample.Shared\Sample.Shared.csproj", "{CDBF9AF1-FB19-4F97-ABCF-E863B16EBEFE}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sample.Infrastructure", "Sample.Infrastructure\Sample.Infrastructure.csproj", "{7368E3D7-A62E-4BC6-AEC8-012081C07139}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,6 +35,10 @@ Global
 		{CDBF9AF1-FB19-4F97-ABCF-E863B16EBEFE}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{CDBF9AF1-FB19-4F97-ABCF-E863B16EBEFE}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{CDBF9AF1-FB19-4F97-ABCF-E863B16EBEFE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7368E3D7-A62E-4BC6-AEC8-012081C07139}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7368E3D7-A62E-4BC6-AEC8-012081C07139}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7368E3D7-A62E-4BC6-AEC8-012081C07139}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7368E3D7-A62E-4BC6-AEC8-012081C07139}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -5,10 +5,10 @@ namespace Sample.App.Factories
 {
   public interface ISampleFactory
   {
-    (SampleModel, SampleException) Create(int userId, SampleModel data);
+    (SampleDto, SampleException) Create(int userId, SampleDto data);
     (bool, SampleException) Delete(int userId, int documentNr);
-    (SampleModel, SampleException) Get(int userId, int documentNr);
-    (IEnumerable<SampleModel>, int, SampleException) GetAll(int userId, int pageSize, int skipPages);
-    (SampleModel, bool?, SampleException) Update(int userId, SampleModel data);
+    (SampleDto, SampleException) Get(int userId, int documentNr);
+    (IEnumerable<SampleDto>, int, SampleException) GetAll(int userId, int pageSize, int skipPages);
+    (SampleDto, bool?, SampleException) Update(int userId, SampleDto data);
   }
 }

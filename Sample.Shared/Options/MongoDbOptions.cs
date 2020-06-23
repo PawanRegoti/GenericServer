@@ -1,8 +1,7 @@
 ﻿namespace Sample.Shared.Options
 {
-	public class MongoDbOptions
+	public class MongoDbOptions: DbOptions
 	{
-		public string ConnectionString { get; set; }
 		public string DatabaseName { get; set; }
 	}
 }

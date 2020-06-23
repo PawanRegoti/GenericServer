@@ -1,8 +1,8 @@
-﻿using System;
+﻿using System.Collections.Generic;
 
 namespace Sample.App
 {
-  public class SampleModel
+  public class SampleDto
   {
     public int DocumentNr { get; set; }
 
@@ -13,5 +13,7 @@ namespace Sample.App
     public string City { get; set; }
 
     public string Country { get; set; }
+
+    public IEnumerable<int> PhoneNumbers { get; set; }
   }
 }

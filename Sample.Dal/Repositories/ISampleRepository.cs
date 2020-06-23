@@ -5,11 +5,11 @@ namespace Sample.Dal.Repositories
 {
   public interface ISampleRepository
   {
-    (SampleDto, SampleException) Create(SampleDto data);
+    (SampleModel, SampleException) Create(SampleModel data);
     (bool, SampleException) Delete(int userId, int documentNr);
-    (SampleDto, SampleException) Get(int userId, int documentNr);
-    (IEnumerable<SampleDto>, int, SampleException) GetAll(int userId, int pageSize, int skipPages);
-    (SampleDto, bool?, SampleException) Update(SampleDto data);
+    (SampleModel, SampleException) Get(int userId, int documentNr);
+    (IEnumerable<SampleModel>, int, SampleException) GetAll(int userId, int pageSize, int skipPages);
+    (SampleModel, bool?, SampleException) Update(SampleModel data);
     (int, SampleException) GetNextDocumentNr(int userId);
   }
 }

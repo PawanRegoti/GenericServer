@@ -1,0 +1,13 @@
+C:\src\NetCoreMongoDbServer\Sample.Infrastructure\bin\Debug\netstandard2.0\Sample.Infrastructure.deps.json
+C:\src\NetCoreMongoDbServer\Sample.Infrastructure\bin\Debug\netstandard2.0\Sample.Infrastructure.dll
+C:\src\NetCoreMongoDbServer\Sample.Infrastructure\obj\Debug\netstandard2.0\Sample.Infrastructure.AssemblyInfoInputs.cache
+C:\src\NetCoreMongoDbServer\Sample.Infrastructure\obj\Debug\netstandard2.0\Sample.Infrastructure.AssemblyInfo.cs
+C:\src\NetCoreMongoDbServer\Sample.Infrastructure\obj\Debug\netstandard2.0\Sample.Infrastructure.csprojAssemblyReference.cache
+C:\src\NetCoreMongoDbServer\Sample.Infrastructure\bin\Debug\netstandard2.0\Sample.Infrastructure.pdb
+C:\src\NetCoreMongoDbServer\Sample.Infrastructure\bin\Debug\netstandard2.0\Sample.Dal.dll
+C:\src\NetCoreMongoDbServer\Sample.Infrastructure\bin\Debug\netstandard2.0\Sample.Shared.dll
+C:\src\NetCoreMongoDbServer\Sample.Infrastructure\bin\Debug\netstandard2.0\Sample.Dal.pdb
+C:\src\NetCoreMongoDbServer\Sample.Infrastructure\bin\Debug\netstandard2.0\Sample.Shared.pdb
+C:\src\NetCoreMongoDbServer\Sample.Infrastructure\obj\Debug\netstandard2.0\Sample.Infrastructure.csproj.CopyComplete
+C:\src\NetCoreMongoDbServer\Sample.Infrastructure\obj\Debug\netstandard2.0\Sample.Infrastructure.dll
+C:\src\NetCoreMongoDbServer\Sample.Infrastructure\obj\Debug\netstandard2.0\Sample.Infrastructure.pdb
