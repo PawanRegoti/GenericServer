@@ -8,3 +8,5 @@ Sample.Shared/bin
 Sample.Shared/obj
 Sample.Test/bin
 Sample.Test/obj
+Sample.Infrastructure/bin
+Sample.Infrastructure/obj
